@@ -18,6 +18,19 @@ const homeController = require('../controllers/home_controller');
 //get from controller home_controller
 router.get('/',homeController.home);
 
+//i want that this will be the main head of all routes in routes file
+//so for that i will do access to the users.js
+router.use('/users',require('./users'));
+
+
+//$$$$$$$$$$$$$$EXAMPLE$$$$$$$$$$$$$$$$$$$$$$
+//for any other routers, access form here
+//router.use('/routerName',require('./routerFile'));
+
+//#@@@@@@@@@@@@@@@@@ Post use
+//use post_controller.js
+router.use('/post_controller',require('./post_controller'));
+
 // This will export to the index.js so that it will be use by
 //index.js
 module.exports = router;
