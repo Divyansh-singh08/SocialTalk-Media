@@ -11,11 +11,11 @@ console.log('router loaded');
 
 //****************************************************************************** */
 //get from controller home_controller
-//fetching from controller
+//fetching from controllers
 const homeController = require('../controllers/home_controller');
 
 
-//get from controller home_controller
+//get from controller home_controller//this is access
 router.get('/',homeController.home);
 
 //i want that this will be the main head of all routes in routes file
@@ -27,7 +27,7 @@ router.use('/users',require('./users'));
 //for any other routers, access form here
 //router.use('/routerName',require('./routerFile'));
 
-//#@@@@@@@@@@@@@@@@@ Post use
+//@@@@@@@@@@@@@@@@@ Post use
 //use post_controller.js
 router.use('/post_controller',require('./post_controller'));
 
