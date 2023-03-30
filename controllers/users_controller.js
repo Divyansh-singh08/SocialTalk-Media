@@ -1,16 +1,21 @@
 const User = require("../models/user");
 
 module.exports.profile = (req, res) => {
-	// return res.render("user_profile", {
-	// 	title: "User_Profile",
-	// });
-	return res.end(`<h1>Yeah this  is the profile work shown here now </h1>`);
+	return res.render("user_profile", {
+		title: "User_Profile",
+	});
+	// return res.end(`<h1>Yeah this  is the profile work shown here now </h1>`);
 };
 
 // Sign Up render
 //for the render from backend we fetching
 //the data from the view file through the ejs
 module.exports.signUp = async function (req, res) {
+	// if they already signUP so go to profile page
+	if (req.isAuthenticated()) {
+		return await res.redirect("/users/profile");
+	}
+
 	return await res.render("user_sign_up", {
 		title: "CodeTalk || Sign Up",
 	});
@@ -18,6 +23,11 @@ module.exports.signUp = async function (req, res) {
 
 // Sign In render
 module.exports.signIn = async function (req, res) {
+	// if they already sign in so go to profile page
+	if (req.isAuthenticated()) {
+		return await res.redirect("/users/profile");
+	}
+
 	return await res.render("user_sign_in", {
 		title: "Code Talk | Sign In",
 	});
@@ -88,9 +98,22 @@ module.exports.create = async function (req, res) {
 //sign in and create a session for the user
 module.exports.createSession = async function (req, res) {
 	//todo Later
-	try{
-
-	}catch(error){
-
+	try {
+		return await res.redirect("/");
+	} catch (error) {
+		console.log(error);
 	}
 };
+
+
+//
+module.exports.destroySession = async function (req, res) {
+	//before redirecting we need to signOut
+	req.logout(function(err){
+		if(err){
+			return next(err);
+		}
+		res.redirect("/");
+	});
+
+}
