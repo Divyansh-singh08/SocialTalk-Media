@@ -13,10 +13,35 @@
         <section id="feed-post">
             <h4>POST</h4>
 
-            <form action="" id="new-post-form" method="post">
+            <% if(locals.user){%>
+            <form action="/posts/createPost" id="new-post-form" method="post">
                 <textarea name="content" id="" cols="30" rows="3"></textarea>
                 <input type="submit" value="POST">
             </form>
+            <%}%>
+
+
+            <div id="posts-list-container">
+                <ul>
+                    <!-- posts is the part of the home_controller.js in populating function  -->
+                    <% for(pt of posts){%>
+                        
+                        <li>
+                          <p>
+                            <%=pt.content%>
+                            <br>
+                            <small>
+                                <%=pt.user.name %>
+                            </small>
+                          </p>
+                        </li>
+                        
+                       
+
+                    <%}%>
+                </ul>
+            </div>
+
         </section>
     </body>
 </html>

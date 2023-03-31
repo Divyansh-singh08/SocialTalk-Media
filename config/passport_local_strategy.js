@@ -112,7 +112,7 @@ passport.serializeUser(function (user, done) {
 // });
 
 //deserializing the user from the key in the cookies
-//taking information i=of the key from the cookies is deserialize
+//taking information of the key from the cookies is deserialize
 passport.deserializeUser(async function (id, done) {
 	try {
 		//find the user is present in the db

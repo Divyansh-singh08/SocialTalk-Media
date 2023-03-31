@@ -22,14 +22,15 @@ router.get('/',homeController.home);
 //so for that i will do access to the users.js connect with index.js router
 router.use('/users',require('./users'));
 
-
+//call to the posts.js file
+router.use('/posts',require('./posts'));
 //$$$$$$$$$$$$$$EXAMPLE$$$$$$$$$$$$$$$$$$$$$$
 //for any other routers, access form here
 //router.use('/routerName',require('./routerFile'));
 
 //@@@@@@@@@@@@@@@@@ Post use
 //use post_controller.js connect with index.js router
-router.use('/post_controller',require('./post_controller'));
+// router.use('/post_controller',require('./post_controller'));
 
 // This will export to the index.js so that it will be use by
 //index.js
