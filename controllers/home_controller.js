@@ -26,6 +26,7 @@ module.exports.home = async (req, res) => {
 		//populate() is a method that allows you to load referenced
 		// documents from other collections(userSchema)
 		//exec() method to actually retrieve the documents
+		// const newPost = await Post.find({}).populate('user').exec();
 		const newPost = await Post.find({}).populate('user').exec();
 		// console.log(newPost);
 		if(newPost){

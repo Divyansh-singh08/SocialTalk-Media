@@ -28,6 +28,11 @@ router.use('/posts',require('./posts'));
 //for any other routers, access form here
 //router.use('/routerName',require('./routerFile'));
 
+//call the comments.js route
+router.use('/comments',require('./comments'));
+
+
+
 //@@@@@@@@@@@@@@@@@ Post use
 //use post_controller.js connect with index.js router
 // router.use('/post_controller',require('./post_controller'));
