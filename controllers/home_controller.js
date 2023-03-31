@@ -27,7 +27,15 @@ module.exports.home = async (req, res) => {
 		// documents from other collections(userSchema)
 		//exec() method to actually retrieve the documents
 		// const newPost = await Post.find({}).populate('user').exec();
-		const newPost = await Post.find({}).populate('user').exec();
+		const newPost = await Post.find({})
+		.populate('user')
+		.populate({
+			path:'comments',
+			populate:{
+				path:'user'
+			}
+		})
+		.exec();
 		// console.log(newPost);
 		if(newPost){
 			return res.render('home',{

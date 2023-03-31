@@ -14,4 +14,7 @@ const postsController  = require('../controllers/post_controller');
 router.post('/createPost',passport.checkAuthentication,postsController.createPost);
 
 
+//create a router for deleting post and associated comments
+router.get('/destroyPost/:id',passport.checkAuthentication,postsController.destroyPost);
+
 module.exports = router;
