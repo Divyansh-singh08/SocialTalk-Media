@@ -14,4 +14,8 @@ const commentController  = require('../controllers/comments_controller');
 router.post('/createComment',passport.checkAuthentication,commentController.createComment);
 
 
+//create a routes for deleting the comments
+router.get('/destroyComment/:id',passport.checkAuthentication,commentController.destroyComment);
+
+
 module.exports = router;

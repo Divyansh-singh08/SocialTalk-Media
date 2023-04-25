@@ -72,19 +72,23 @@ passport.use(
 	new LocalStrategy(
 		{
 			usernameField: "email",
+			//this allow us to first argument as req function call
+			passReqToCallback: true,
 		},
-		async function (email, password, done) {
+		async function (req,email, password, done) {
 			try {
 				const user = await User.findOne({ email: email });
 
 				if (!user || user.password != password) {
-					console.log(`Invalid Password`);
+					// console.log(`Invalid Password`);
+					req.flash('error',`Invalid Username OR Password`);
 					return done(null, false);
 				}
 
 				return done(null, user);
 			} catch (err) {
-				console.log("Error in passportJS", err);
+				// console.log("Error in passportJS", err);
+				req.flash('error',`Error you got ${err}`);
 				return done(err);
 			}
 		}
@@ -127,14 +131,16 @@ passport.deserializeUser(async function (id, done) {
 
 //sending data to the current user to the view
 //check user authentication
-passport.checkAuthentication = async (req, res, next) => {
+passport.checkAuthentication =(req, res, next) => {
 	//first user sign-in then pass on the next() function->>>controller
 	if (req.isAuthenticated()) {
-		return await next();
+		console.log("inside if");
+
+		return next();
 	}
 
 	//if user is not sign in
-	return await res.redirect("/users/sign-in");
+	return res.redirect("/users/sign-in");
 };
 
 //set the user for views

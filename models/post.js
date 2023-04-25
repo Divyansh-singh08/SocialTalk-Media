@@ -3,6 +3,9 @@
 
 const mongoose = require("mongoose");
 
+//import like
+// const like = require("like");
+
 //creating the schema
 const postSchema = new mongoose.Schema(
 	{
@@ -16,19 +19,25 @@ const postSchema = new mongoose.Schema(
 		//This is a powerful feature of Mongoose that allows you to create
 		// relationships between documents in different collections,making it easier to model complex MdB
 		user: {
+			//taking reference of userSchema
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
 		},
 
 		//include the id of all the comment into the post as an array
 		//include the array of ids of all the comments in this postSchema itself
-		comments:[
+		comments: [
 			{
-				type:mongoose.Schema.Types.ObjectId,
+				type: mongoose.Schema.Types.ObjectId,
 				ref: "Comment",
-			}
-		] 
-
+			},
+		],
+		likes: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "Like",
+			},
+		],
 	},
 	{
 		timestamps: true,
