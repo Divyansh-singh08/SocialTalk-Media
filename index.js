@@ -81,7 +81,7 @@ if(env.name == 'development'){
 
 
 //middleWare
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: false}));
 //need to set cookieParser
 app.use(cookieParser());
 

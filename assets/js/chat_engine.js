@@ -16,7 +16,8 @@ class ChatEngine {
 		//io is given by socket which is global variable
 		//i emit the connection event
 		// console.log(this.socket);
-		this.socket = io.connect(`http://localhost:5000`); //check is connection received or not
+		//http://52.91.226.168:8000/
+		this.socket = io.connect(`http://52.91.226.168:5000`); //check is connection received or not
 		// console.log(this.socket);
 		if (this.userEmail) {
 			//if user true then only connection happen
