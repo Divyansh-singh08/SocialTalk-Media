@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/css/footer.css" />
+<footer id="partial-footer">
+	<div id="left-content">
+		<div>
+			&copy; Divyansh Singh.
+			<br />
+			All Rights Reserved
+		</div>
+	</div>
+	<div id="right-content">
+		<a href="/">Home</a>
+		<br />
+		<%if(locals.user){%>
+		<a href="/users/profile/<%=locals.user.id%>">Profile</a>
+		<%}%>
+	</div>
+</footer>
