@@ -1,3 +1,4 @@
+
 ::selection {
   color: #d3cccc;
   background-color: teal; }
@@ -32,3 +33,9 @@ body {
     padding: 10px;
     box-shadow: 0px 0px 10px 10px #4b4646;
     background-color: #706969; }
+
+/* body {
+  margin: 0; }
+  body #layout-main {
+    height: 100%; }
+>>>>>>> f77a583b9a1417d08916d313477ed892e85eeed6 */

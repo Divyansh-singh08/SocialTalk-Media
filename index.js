@@ -5,10 +5,12 @@ const express = require("express");
 const env = require("./config/environment");
 const logger = require("morgan");
 
+
 const path = require("path");
 const cookieParser = require("cookie-parser"); //this is plug in for storing cookies
 const app = express(); //for server start
 require("./config/view-helpers")(app); //this is call for view-helper
+
 //define port
 const port = 8000;
 //express-ejs-layouts is a middleware for the Express web application framework
@@ -47,6 +49,7 @@ const flash = require("connect-flash");
 const customMiddleware = require("./config/flashMiddleware");
 
 //setup the chat server to be  used  with socket.io
+
 // const chatServer = require("http").createServer(app); //server create for socket
 // const chatSockets = require("./config/chat_sockets").chatSockets(chatServer);
 // chatServer.listen(5000);
@@ -59,6 +62,12 @@ server.listen(5000, () => {
 	console.log(`Chat server is listening on port 5000`);
 });
 const chatSockets = require("./config/chat_sockets").chatSockets(server);
+
+// const chatServer = require("http").createServer(app); //server create for socket
+// const chatSockets = require("./config/chat_sockets").chatSockets(chatServer);
+// chatServer.listen(5000);
+// console.log(`chat server is listing on the port 5000`);
+// >>>>>>> f77a583b9a1417d08916d313477ed892e85eeed6
 
 // const path = require('path');
 
@@ -74,11 +83,13 @@ const chatSockets = require("./config/chat_sockets").chatSockets(server);
 // );
 //deployment
 //we don't want to run everyTime in production MODE,so we did...
+
 if (env.name == "development") {
 	app.use(
 		sassMiddleware({
 			src: path.join(__dirname, env.asset_path, "scss"),
 			dest: path.join(__dirname, env.asset_path, "css"),
+
 			debug: true,
 			outputStyle: "extended",
 			prefix: "/css",
@@ -86,8 +97,12 @@ if (env.name == "development") {
 	);
 }
 
+
+
+
 //middleWare
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
+
 //need to set cookieParser
 app.use(cookieParser());
 
@@ -101,8 +116,11 @@ app.use(express.static(path.join(__dirname, env.asset_path)));
 //make the uploaded path available to the browser
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
+
 //morgan and production logic
 app.use(logger(env.morgan.mode, env.morgan.options));
+
+
 
 app.use(expressLayouts);
 // extract style and scripts from sub pages into the layout
