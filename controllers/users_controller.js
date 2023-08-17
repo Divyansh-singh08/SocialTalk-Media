@@ -1,9 +1,6 @@
 const User = require("../models/user");
 
-<<<<<<< HEAD
-=======
 
->>>>>>> f77a583b9a1417d08916d313477ed892e85eeed6
 const fs = require("fs");
 const path = require("path");
 
@@ -119,18 +116,13 @@ module.exports.update = async (req, res) => {
 				if (req.file) {
 					//check if user already have the avatar with then or not
 					//if present then i remove avatar and uploaded a new one
-<<<<<<< HEAD
+
 					//user.avatar
 					if (userUpdate.avatar) {
 						//true then delete the avatar
 						//for deleting we need fs and path modules
 						fs.unlinkSync(path.join(__dirname, "..", user.avatar));
-=======
-					if(user.avatar){
-						//true then delete the avatar
-						//for deleting we need fs and path modules
-						fs.unlinkSync(path.join(__dirname,'..',user.avatar));
->>>>>>> f77a583b9a1417d08916d313477ed892e85eeed6
+
 					}
 
 					userUpdate.avatar = User.avatarPath + "/" + req.file.filename;
